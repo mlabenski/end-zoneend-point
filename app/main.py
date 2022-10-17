@@ -1,15 +1,14 @@
 from flask import Flask, request, redirect
+from flask_redis import FlaskRedis
+
+
 app = Flask(__name__)
+redis_client = FlaskRedis(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def refresh():
     if request.method == 'POST':
-        params = {
-            'buyer': request.get_json().get('Buyer'),
-            'orderId': request.get_json().get('OrderId'),
-            'email': request.get_json().get('Email'),
-            'returnUrl': request.get_json().get('ServerNotificationUrl'),
-        }
+        redis_client.set('orderID', '21902')
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
 
