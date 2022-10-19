@@ -11,7 +11,7 @@ def refresh():
         print(data)
         returnuurl = {'returnUrl': "https://cpswoo.securepayments.cardpointe.com/pay?total=25.00&cf_hidden_woo_id=72&details=BEASySpecialtybathroom%7C1%7C25"}
 
-        return jsonify(returnuurl), 200
+        return "https://cpswoo.securepayments.cardpointe.com/pay?total=25.00&cf_hidden_woo_id=72&details=BEASySpecialtybathroom%7C1%7C25", 200
 
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
