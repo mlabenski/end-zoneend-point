@@ -9,9 +9,9 @@ def refresh():
     if request.method == 'POST':
         data = request.get_json()
         print(data)
-        returnURL = "https://cpswoo.securepayments.cardpointe.com/pay?total=25.00&cf_hidden_woo_id=72&details=BEASySpecialtybathroom%7C1%7C25"
+        returnuurl = {'returnUrl': "https://cpswoo.securepayments.cardpointe.com/pay?total=25.00&cf_hidden_woo_id=72&details=BEASySpecialtybathroom%7C1%7C25"}
 
-        return 200
+        return jsonify(returnURL), 200
 
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
