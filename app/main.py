@@ -14,7 +14,7 @@ def refresh():
 
         redis_client.set('orderID', '21902')
         result = { 'url' : 'https://cpswoo.securepayments.cardpointe.com/pay?total=25.00&cf_hidden_woo_id=72&details=BEASySpecialtybathroom%7C1%7C25'}
-        return jsonify(data=returnURL)
+        return 200
 
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
