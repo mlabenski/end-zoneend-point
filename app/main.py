@@ -34,9 +34,9 @@ def refresh():
 def callback_order():
     if request.method == 'POST':
         data = request.get_data();
-        print(data)
-        return 200
+        print(jsonify(data.decode("utf-8")));
+        return "", 200
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
     else:
-        return 403
+        return "", 403
