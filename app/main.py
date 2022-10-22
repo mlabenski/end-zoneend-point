@@ -16,14 +16,11 @@ def get_the_data():
 @app.route('/data', methods=['GET', 'POST'])
 def refresh():
     if request.method == 'POST':
-        woo_id = str(request.form['woo_id']),
-        price = str(request.form['total_amount']),
-        order_details = str(request.form['order'])
-        datadict = {
-            "price": 'total_amount',
-            "order_details": order_details
-        }
-        db.set("order", datadict)
+        woo_id = request.form['woo_id'],
+        price = request.form['total_amount'],
+        order_details = request.form['order']
+        string_data = "woo_id"+woo_id+"price="+price+"order="+order_details
+        db.set("order", string_data)
         return "https://cpswoo.securepayments.cardpointe.com/pay?total="+price+"&cf_hidden_woo_id="+woo_id+"&details="+order_details, 200
 
         # jsonData = json.dumps(params)
