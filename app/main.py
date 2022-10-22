@@ -2,18 +2,13 @@ from flask import Flask, request, redirect, jsonify
 
 import redis
 import os
-from flask_session import Session
 
 
 app = Flask(__name__)
+db=redis.from_url(os.environ['REDIS_URL'])
 # README: where is the best spot to include redis db calls?
 # A separated interface?
-app.config['SESSION_TYPE'] = 'redis'
-app.config['SESSION_PERMANENT'] = False
-app.config['SESSION_USE_SIGNER'] = True
-app.secret_key = '12341234'
-r = redis.from_url(os.environ.get("REDIS_URL"))
-server_session = Session(app)
+
 @app.route('/data', methods=['GET', 'POST'])
 def refresh():
     if request.method == 'POST':
@@ -25,9 +20,8 @@ def refresh():
             "price": 'total_amount',
             "order_details": order_details
         }
-
-        server_session.set('orderID', woo_id)
-        server_session.hmset("orders_", datadict)
+        db.set('orderID', woo_id)
+        # server_session.hmset("orders_", datadict)
         return "https://cpswoo.securepayments.cardpointe.com/pay?total="+price+"&cf_hidden_woo_id="+woo_id+"&details="+order_details, 200
 
         # jsonData = json.dumps(params)
