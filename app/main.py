@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, jsonify
-from flask_redis import FlaskRedis
+
 import redis
 import os
 from flask_session import Session
