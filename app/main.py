@@ -33,10 +33,8 @@ def refresh():
 @app.route('/callback', methods=['GET', 'POST'])
 def callback_order():
     if request.method == 'POST':
-        url = str(request.form['URL'])
-        woo_id = str(request.form['cf_woo_id'])
-        merchantId = str(request.form['merchantId'])
-        print(url, woo_id, merchantId)
+        data = request.get_data();
+        print(data)
         return 200
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
