@@ -20,11 +20,10 @@ def refresh():
         price = request.form['total_amount']
         order_details = request.form['order']
         datadict = {
-            "woo_id": woo_id,
             "price": 'total_amount',
             "order_details": order_details
         }
-        db.hset(woo_id, datadict)
+        db.hset("order_id", woo_id, datadict)
         return "https://cpswoo.securepayments.cardpointe.com/pay?total="+price+"&cf_hidden_woo_id="+woo_id+"&details="+order_details, 200
 
         # jsonData = json.dumps(params)
