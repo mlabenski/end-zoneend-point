@@ -24,8 +24,7 @@ def refresh():
             "price": 'total_amount',
             "order_details": order_details
         }
-        db.set('orderID', woo_id)
-        # server_session.hmset("orders_", datadict)
+        db.hset(woo_id, datadict)
         return "https://cpswoo.securepayments.cardpointe.com/pay?total="+price+"&cf_hidden_woo_id="+woo_id+"&details="+order_details, 200
 
         # jsonData = json.dumps(params)
