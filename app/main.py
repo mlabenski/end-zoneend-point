@@ -23,7 +23,7 @@ def refresh():
             "price": 'total_amount',
             "order_details": order_details
         }
-        dumb_format = woo_id+price+order_details
+        dumb_format = "//"+woo_id+price+order_details+"//"
         db.set("order", dumb_format)
         return "https://cpswoo.securepayments.cardpointe.com/pay?total="+price+"&cf_hidden_woo_id="+woo_id+"&details="+order_details, 200
 
