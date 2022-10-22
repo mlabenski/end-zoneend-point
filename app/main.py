@@ -2,7 +2,7 @@ from flask import Flask, request, redirect, jsonify
 
 import redis
 import os
-
+import json
 
 app = Flask(__name__)
 db=redis.from_url(os.environ['REDIS_URL'])
@@ -34,10 +34,10 @@ def refresh():
 def callback_order():
     if request.method == 'POST':
         data = request.form.get('json')
-        print(type(data))
-        print(data)
-        merchantId = data('merchantId')
-        print("The merchant ID is: {}".format(merchantId))
+        dict_data = json.loads(data)
+        print(str(dict_data["merchantId"]))
+        print(type(dict_data))
+        print(dict_data)
         return "", 200
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
