@@ -33,7 +33,7 @@ def refresh():
 @app.route('/callback', methods=['GET', 'POST'])
 def callback_order():
     if request.method == 'POST':
-        data = request.get_json();
+        data = jsonify(request.json)
         print(data)
         return "", 200
         # jsonData = json.dumps(params)
