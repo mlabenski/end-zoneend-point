@@ -2,4 +2,4 @@ import os
 from urllib.parse import urlparse
 import redis
 
-r = redis.from_urk(os.environ.get("REDIS_URL"))
+r = redis.from_url(os.environ.get("REDIS_URL"))
