@@ -34,8 +34,9 @@ def refresh():
 def callback_order():
     if request.method == 'POST':
         data = request.form.get('json')
+        print(type(data))
         print(data)
-        merchantId = data['merchantId']
+        merchantId = data('merchantId')
         print("The merchant ID is: {}".format(merchantId))
         return "", 200
         # jsonData = json.dumps(params)
