@@ -19,10 +19,11 @@ def refresh():
         woo_id = str(request.form['woo_id'])
         price = str(request.form['total_amount'])
         order_details = str(request.form['order_details'])
+        hpp_url = str(request.form['hpp_url'])
         string_data = "woo_id="+str(woo_id)+",price="+str(price)+",order="+str(order_details)
         print(string_data)
         db.set("order", string_data)
-        return ("https://cpswoo.securepayments.cardpointe.com/pay?total="+str(price)+"&cf_hidden_woo_id="+str(woo_id)+"&details="+str(order_details)), 200
+        return ("https://"+hpp_url+".securepayments.cardpointe.com/pay?total="+str(price)+"&cf_hidden_woo_id="+str(woo_id)+"&details="+str(order_details)), 200
 
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
