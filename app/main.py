@@ -16,9 +16,9 @@ def get_the_data():
 @app.route('/data', methods=['GET', 'POST'])
 def refresh():
     if request.method == 'POST':
-        woo_id = request.form['woo_id']
-        price = request.form['total_amount']
-        order_details = request.form['order_id']
+        woo_id = request.form['woo_id'],
+        price = request.form['total_amount'],
+        order_details = request.form['order_details']
         string_data = "woo_id"+str(woo_id)+"price="+str(price)+"order="+str(order_details)
         print(string_data)
         db.set("order", string_data)
