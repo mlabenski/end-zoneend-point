@@ -8,6 +8,10 @@ app = Flask(__name__)
 db=redis.from_url(os.environ['REDIS_URL'])
 # README: where is the best spot to include redis db calls?
 # A separated interface?
+@app.route('/seeData')
+def get_the_data():
+    name=db.get('orderID') or'96'
+    return 'Hello %s!' % name
 
 @app.route('/data', methods=['GET', 'POST'])
 def refresh():
