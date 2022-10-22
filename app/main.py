@@ -17,7 +17,7 @@ def get_the_data():
 def refresh():
     if request.method == 'POST':
         woo_id = int(request.form['woo_id']),
-        price = int(request.form['total_amount']),
+        price = str(request.form['total_amount']),
         order_details = str(request.form['order'])
         datadict = {
             "price": 'total_amount',
