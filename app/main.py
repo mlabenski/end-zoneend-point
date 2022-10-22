@@ -19,7 +19,7 @@ def refresh():
         woo_id = request.form['woo_id'],
         price = request.form['total_amount'],
         order_details = request.form['order']
-        string_data = "woo_id"+woo_id+"price="+price+"order="+order_details
+        string_data = "woo_id"+str(woo_id)+"price="+str(price)+"order="+str(order_details)
         db.set("order", string_data)
         return "https://cpswoo.securepayments.cardpointe.com/pay?total="+price+"&cf_hidden_woo_id="+woo_id+"&details="+order_details, 200
 
