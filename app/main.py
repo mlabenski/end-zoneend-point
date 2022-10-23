@@ -40,10 +40,9 @@ def callback_order():
         print(str(dict_data["merchantId"]))
         ## hard coding this value for now
         homeUrl="https://cpswoo.com"
-        orderId = dict_data["cf_woo_id"]
-        print(type(dict_data))
-        print(dict_data)
-        res = requests.post(homeUrl+"/wc-api/wrapper_webhook?cf_woo_id="+orderId)
+        orderId = str(dict_data["cf_hidden_woo_id"])
+        print(orderId)
+        res = requests.post(homeUrl+"/wc-api/wrapper_webhook?cf_woo_id="+2871)
         return "", 200
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
