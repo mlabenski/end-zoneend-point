@@ -3,6 +3,7 @@ from flask import Flask, request, redirect, jsonify
 import redis
 import os
 import json
+import requests
 
 app = Flask(__name__)
 db=redis.from_url(os.environ['REDIS_URL'])
@@ -37,8 +38,12 @@ def callback_order():
         data = request.form.get('json')
         dict_data = json.loads(data)
         print(str(dict_data["merchantId"]))
+        ## hard coding this value for now
+        homeUrl="https://cpswoo.com"
+        orderId = dict_data["cf_woo_id"]
         print(type(dict_data))
         print(dict_data)
+        res = requests.post(homeUrl+"/wc-api/wrapper_webhook?cf_woo_id="+orderId)
         return "", 200
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
