@@ -42,13 +42,13 @@ def callback_order():
         homeUrl="https://cpswoo.com"
         redirectUrl = str(dict_data["referrer"])
         print(redirectUrl)
-        orderId= str(dict_data["cf_hidden_woo_id"])
+        #orderId= str(dict_data["cf_hidden_woo_id"])
         print(dict_data)
-        if orderId:
-            res = requests.post(redirectUrl + "/wc-api/wrapper_webhook?cf_woo_id=" + orderId)
-            return "", 200
-        res = requests.post(homeUrl + "/wc-api/wrapper_webhook")
+        #if orderId:
+        res = requests.post(redirectUrl + "/wc-api/wrapper_webhook?cf_woo_id=2871")
         return "", 200
+        #res = requests.post(homeUrl + "/wc-api/wrapper_webhook")
+        #return "", 200
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
     else:
