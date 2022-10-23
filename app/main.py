@@ -37,18 +37,13 @@ def callback_order():
     if request.method == 'POST':
         data = request.form.get('json')
         dict_data = json.loads(data)
-        print(str(dict_data["merchantId"]))
-        ## hard coding this value for now
-        homeUrl="https://cpswoo.com"
         redirectUrl = str(dict_data["referer"])
-        print(redirectUrl)
-        #orderId= str(dict_data["cf_hidden_woo_id"])
-        print(dict_data)
-        #if orderId:
-        res = requests.post(redirectUrl + "/wc-api/wrapper_webhook?cf_woo_id=2871")
-        return "", 200
-        #res = requests.post(homeUrl + "/wc-api/wrapper_webhook")
-        #return "", 200
+        orderId = str(dict_data["cf_hidden_woo_id"])
+        print("WEBHOOK RECEIVED FROM "+redirectUrl+"with the Woo Order ID of "+orderId)
+        if orderId:
+            res = requests.post(redirectUrl + "/wc-api/wrapper_webhook?cf_woo_id=2871")
+            return "", 200
+        return "no order ID confirmed", 405
         # jsonData = json.dumps(params)
         # jsonData should be transferred to redis server.
     else:
