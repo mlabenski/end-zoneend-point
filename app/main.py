@@ -40,7 +40,7 @@ def callback_order():
         print(str(dict_data["merchantId"]))
         ## hard coding this value for now
         homeUrl="https://cpswoo.com"
-        redirectUrl = str(dict_data["cf_hidden_woo_id"])
+        redirectUrl = str(dict_data["referrer"])
         print(redirectUrl)
         orderId= str(dict_data["cf_hidden_woo_id"])
         print(dict_data)
