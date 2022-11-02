@@ -41,7 +41,7 @@ def callback_order():
         orderId = str(dict_data["cf_hidden_woo_id"])
         print("WEBHOOK RECEIVED FROM "+redirectUrl+"with the Woo Order ID of "+orderId)
         if orderId:
-            res = requests.post(redirectUrl + "/wc-api/wrapper_webhook?cf_woo_id=2871")
+            res = requests.post(redirectUrl + "/wc-api/wrapper_webhook?cf_woo_id="+orderId)
             return "", 200
         return "no order ID confirmed", 405
         # jsonData = json.dumps(params)
