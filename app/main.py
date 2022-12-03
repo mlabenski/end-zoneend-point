@@ -12,7 +12,7 @@ db=redis.from_url(os.environ['REDIS_URL'])
 @app.route('/seeData')
 def get_the_data():
     name=db.get('orderID') or'96'
-    return 'Hello %s!' % name
+    return 'Hello there %s!' % name
 
 @app.route('/data', methods=['GET', 'POST'])
 def refresh():
