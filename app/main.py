@@ -22,9 +22,11 @@ def refresh():
         order_details = str(request.form['order_details'])
         hpp_url = str(request.form['hpp_url'])
         shipping_total = str(request.form['shipping_total'])
+        tax_total = str(request.form['tax_total'])
         string_data = "woo_id="+str(woo_id)+",price="+str(price)+",order="+str(order_details)
         print(string_data)
         print(shipping_total)
+        print(tax_total)
         # db.set("order", string_data)
         return ("https://"+str(hpp_url)+".securepayments.cardpointe.com/pay?total="+str(price)+"&cf_hidden_woo_id="+str(woo_id)+"&details="+str(order_details)), 200
 
