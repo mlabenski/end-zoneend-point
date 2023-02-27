@@ -18,7 +18,7 @@ def get_the_data():
 def refresh():
     if request.method == 'POST':
         headers = request.headers
-        auth = headers.get("Authorization")
+        auth = headers.get("X-Api-Key")
         print(auth)
         woo_id = str(request.form['woo_id'])
         price = str(request.form['total_amount'])
