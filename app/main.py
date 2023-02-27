@@ -17,6 +17,9 @@ def get_the_data():
 @app.route('/data', methods=['GET', 'POST'])
 def refresh():
     if request.method == 'POST':
+        headers = request.headers
+        auth = headers.get("Authorization")
+        print(auth)
         woo_id = str(request.form['woo_id'])
         price = str(request.form['total_amount'])
         order_details = str(request.form['order_details'])
