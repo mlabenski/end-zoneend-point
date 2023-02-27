@@ -6,7 +6,7 @@ import json
 import requests
 
 app = Flask(__name__)
-db=redis.from_url(os.environ['REDIS_URL'])
+# db=redis.from_url(os.environ['REDIS_URL'])
 # README: where is the best spot to include redis db calls?
 # A separated interface?
 @app.route('/seeData')
