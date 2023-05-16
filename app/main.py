@@ -55,3 +55,43 @@ def callback_order():
         # jsonData should be transferred to redis server.
     else:
         return "", 403
+    
+@app.route('/match_history/<summoner_name>', methods=['GET', 'POST'])
+def get_match_history(summoner_name):
+    api_key = 'RGAPI-64501d4c-b154-4f36-b7e8-9a830ded955d'  # Replace with your actual API key
+    region = 'na1'  # Replace with the desired region (e.g., 'na1' for North America)
+
+    # Get summoner ID by summoner name
+    summoner_url = f'https://{region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summoner_name}'
+    summoner_response = requests.get(summoner_url, params={'api_key': api_key})
+
+    if summoner_response.status_code == 200:
+        summoner_data = summoner_response.json()
+        print(summoner_data)
+        puuid = summoner_data['puuid']
+
+        # Get match IDs by PUUID
+        match_ids_url = f'https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/{puuid}/ids'
+        match_ids_response = requests.get(match_ids_url, headers={'X-Riot-Token': api_key})
+        print(match_ids_response)
+        if match_ids_response.status_code == 200:
+            match_ids_data = match_ids_response.json()
+            print(match_ids_data)
+            match_ids = match_ids_data[:5] # Retrieve the first 5 match IDs
+            print(match_ids)
+
+            detailed_matches = []
+            for match_id in match_ids:
+                # Get detailed match information by match ID
+                match_url = f'https://americas.api.riotgames.com/lol/match/v5/matches/{match_id}'
+                match_response = requests.get(match_url, headers={'X-Riot-Token': api_key})
+
+                if match_response.status_code == 200:
+                    match_data = match_response.json()
+                    detailed_matches.append(match_data)
+
+            return jsonify(detailed_matches)
+        else:
+            return jsonify({'error': 'Failed to retrieve match history :('}), 404
+
+    return jsonify({'error': 'Summoner not found.'}), 404
