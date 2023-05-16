@@ -58,7 +58,7 @@ def callback_order():
     
 @app.route('/match_history/<summoner_name>', methods=['GET', 'POST'])
 def get_match_history(summoner_name):
-    api_key = 'RGAPI-64501d4c-b154-4f36-b7e8-9a830ded955d'  # Replace with your actual API key
+    api_key = 'RGAPI-3b5e975d-b9c8-4de2-b6a4-b84e15d25fa4'  # Replace with your actual API key
     region = 'na1'  # Replace with the desired region (e.g., 'na1' for North America)
 
     # Get summoner ID by summoner name
