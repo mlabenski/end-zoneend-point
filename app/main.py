@@ -6,7 +6,7 @@ import json
 import requests
 
 app = Flask(__name__)
-riot_api_key=ros.environ['RIOT_API']
+riot_api_key=os.environ['RIOT_API']
 # README: where is the best spot to include redis db calls?
 # A separated interface?
 @app.route('/seeData')
