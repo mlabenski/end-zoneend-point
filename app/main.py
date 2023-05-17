@@ -6,7 +6,7 @@ import json
 import requests
 
 app = Flask(__name__)
-# db=redis.from_url(os.environ['REDIS_URL'])
+# riot_api_key=ros.environ['RIOT_API']
 # README: where is the best spot to include redis db calls?
 # A separated interface?
 @app.route('/seeData')
@@ -58,7 +58,7 @@ def callback_order():
     
 @app.route('/match_history/<summoner_name>', methods=['GET', 'POST'])
 def get_match_history(summoner_name):
-    api_key = 'RGAPI-3b5e975d-b9c8-4de2-b6a4-b84e15d25fa4'  # Replace with your actual API key
+    api_key = riot_api_key  # Replace with your actual API key
     region = 'na1'  # Replace with the desired region (e.g., 'na1' for North America)
 
     # Get summoner ID by summoner name
