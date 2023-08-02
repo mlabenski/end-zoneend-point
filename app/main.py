@@ -1,6 +1,5 @@
 from flask import Flask, request, redirect, jsonify
 
-import redis
 import os
 import json
 import requests
